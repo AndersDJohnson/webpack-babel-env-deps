@@ -8,7 +8,7 @@
 A webpack helper to find dependencies of your project that require transpilation with Babel,
 based on [minimum Node.js engines](https://docs.npmjs.com/files/package.json#engines)
 that assume features provided by plugins and polyfills from [`babel-preset-env`][babel-preset-env]
-and unsupported by the [native UglifyJS webpack plugin](https://github.com/webpack-contrib/uglifyjs-webpack-plugin)
+and [unsupported](https://github.com/babel/babel-preset-env#targetsuglify) by the [native UglifyJS webpack plugin](https://github.com/webpack-contrib/uglifyjs-webpack-plugin)
 through at least verison `3.x`.
 
 This module generates regular expressions to be used in the `exclude` or `include` properties
@@ -44,7 +44,14 @@ export default {
           loader: 'babel-loader',
           // specify options here or in `.babelrc`
           options: {
-            presets: ['env']
+            presets: [
+              ['env', {
+                targets: {
+                  browsers: ['> 1%, last 2 versions, Firefox ESR'],
+                  uglify: true
+                }
+              }]
+            ]
           }
         }
       }
@@ -62,6 +69,7 @@ export default {
 
 ## Reference
 
+* https://github.com/babel/babel-preset-env#targetsuglify
 * http://2ality.com/2017/07/npm-packages-via-babel.html
 * http://2ality.com/2017/06/pkg-esnext.html
 * https://github.com/SamVerschueren/babel-engine-plugin
