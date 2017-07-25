@@ -1,6 +1,10 @@
 # webpack-babel-env-deps
 > Find node modules to transpile with Babel.
 
+[![npm](https://img.shields.io/npm/v/webpack-babel-env-deps.svg)](https://www.npmjs.com/package/webpack-babel-env-deps)
+[![Travis CI](https://img.shields.io/travis/AndersDJohnson/webpack-babel-env-deps.svg)](https://travis-ci.org/AndersDJohnson/webpack-babel-env-deps)
+[![Codecov](https://img.shields.io/codecov/c/github/AndersDJohnson/webpack-babel-env-deps.svg)](https://codecov.io/gh/AndersDJohnson/webpack-babel-env-deps)
+
 Finds dependencies that specify minimum node engines that assume features
 provided by plugins and polyfills in [`babel-preset-env`][babel-preset-env]
 and therefore require transpilation.
