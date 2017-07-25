@@ -15,8 +15,8 @@ This module generates regular expressions to be used in the `exclude` or `includ
 of your [`babel-loader`][babel-loader] rule in your configuration.
 
 For example, [`strip-indent`](https://github.com/sindresorhus/strip-indent)
-is (as of July 2017) specifies a minimum Node.js engine of [`>=4`](https://github.com/sindresorhus/strip-indent/blob/master/package.json#L13)
-and uses features like arrow functions (see [strip-indent#1][strip-indent-1]).
+(as of July 2017) specifies a minimum Node.js engine of [`>=4`](https://github.com/sindresorhus/strip-indent/blob/master/package.json#L13)
+and uses features like arrow functions (see [strip-indent#1][strip-indent-1]) that must be transpiled.
 See [issues](#issues) below for more examples.
 
 ## Install
