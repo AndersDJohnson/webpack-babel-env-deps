@@ -1,1 +1,1 @@
-export default /node_modules\/(?!(callsites|enhanced-resolve|esprima|find-up|jest|jest-cli|loader-runner|loader-utils|locate-path|p-limit|p-locate|p-map|path-exists|request|strip-indent|uglifyjs-webpack-plugin|webpack))\/.*/
+export default /node_modules\/(?!(babel-loader|callsites|enhanced-resolve|esprima|find-cache-dir|find-up|jest|jest-cli|loader-runner|loader-utils|locate-path|make-dir|p-limit|p-locate|p-map|path-exists|pkg-dir|request|strip-indent|uglifyjs-webpack-plugin|webpack))\/.*/
