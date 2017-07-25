@@ -28,5 +28,6 @@
     "strip-indent": "^2.0.0",
     "webpack": "^3.3.0",
     "webpack-node-externals": "^1.6.0"
-  }
+  },
+  "repository": "AndersDJohnson/webpack-babel-env-deps"
 }
