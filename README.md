@@ -18,7 +18,7 @@ or:
 
 ## Use
 
-```
+```js
 import babelEnvDeps from 'webpack-babel-env-deps'
 
 export default {
