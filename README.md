@@ -64,6 +64,7 @@ export default {
 
 * http://2ality.com/2017/07/npm-packages-via-babel.html
 * http://2ality.com/2017/06/pkg-esnext.html
+* https://github.com/SamVerschueren/babel-engine-plugin
 
 [strip-indent-1]: https://github.com/sindresorhus/strip-indent/issues/1
 [babel-loader]: https://github.com/babel/babel-loader
