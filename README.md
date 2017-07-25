@@ -8,7 +8,7 @@
 A webpack helper to find dependencies of your project that require transpilation with Babel,
 based on [minimum Node.js engines](https://docs.npmjs.com/files/package.json#engines)
 that assume features provided by plugins and polyfills from [`babel-preset-env`][babel-preset-env]
-and unsupported by the [native UgfliyJS webpack plugin](https://github.com/webpack-contrib/uglifyjs-webpack-plugin)
+and unsupported by the [native UglifyJS webpack plugin](https://github.com/webpack-contrib/uglifyjs-webpack-plugin)
 through at least verison `3.x`.
 
 This module generates regular expressions to be used in the `exclude` or `include` properties
@@ -38,8 +38,7 @@ export default {
       {
         test: /\.js$/,
         exclude: [
-          babelEnvDeps.exclude()
-          // generated: /node_modules\/(?!(detect-indent|request|...)).*/
+          babelEnvDeps.exclude() // returns /node_modules\/(?!(detect-indent|request|...)).*/
         ],
         use: {
           loader: 'babel-loader',
