@@ -29,5 +29,22 @@
     "webpack": "^3.3.0",
     "webpack-node-externals": "^1.6.0"
   },
-  "repository": "AndersDJohnson/webpack-babel-env-deps"
+  "repository": "AndersDJohnson/webpack-babel-env-deps",
+  "keywords": [
+    "webpack",
+    "babel",
+    "es6",
+    "es2015",
+    "es2016",
+    "es7",
+    "transpile",
+    "babel-preset",
+    "babel-preset-env",
+    "transpilation",
+    "transpiler",
+    "javascript",
+    "js",
+    "dependencies",
+    "dependency"
+  ]
 }
