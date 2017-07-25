@@ -60,6 +60,10 @@ export default {
 * [https://github.com/sindresorhus/strip-indent/issues/1][strip-indent-1]
 * https://github.com/caolan/async/issues/1351
 
+## Reference
+
+* http://2ality.com/2017/07/npm-packages-via-babel.html
+* http://2ality.com/2017/06/pkg-esnext.html
 
 [strip-indent-1]: https://github.com/sindresorhus/strip-indent/issues/1
 [babel-loader]: https://github.com/babel/babel-loader
