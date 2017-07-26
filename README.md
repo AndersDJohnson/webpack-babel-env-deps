@@ -5,7 +5,7 @@
 [![Travis CI](https://img.shields.io/travis/AndersDJohnson/webpack-babel-env-deps.svg)](https://travis-ci.org/AndersDJohnson/webpack-babel-env-deps)
 [![Codecov](https://img.shields.io/codecov/c/github/AndersDJohnson/webpack-babel-env-deps.svg)](https://codecov.io/gh/AndersDJohnson/webpack-babel-env-deps)
 
-A webpack helper to find dependencies of your project that require transpilation with Babel,
+A webpack helper to find dependencies of your project that require transpilation with Babel (and [`babel-preset-env`][babel-preset-env]),
 based on minimum Node.js engines ([`engines`][engines] in `package.json`) or ES2015/ES6+ source ([`module`][module] in `package.json`), which assume features provided by plugins and polyfills from [`babel-preset-env`][babel-preset-env], and are [unsupported](https://github.com/babel/babel-preset-env#targetsuglify) by the [native UglifyJS webpack plugin](https://github.com/webpack-contrib/uglifyjs-webpack-plugin)
 through at least verison `3.x`.
 
