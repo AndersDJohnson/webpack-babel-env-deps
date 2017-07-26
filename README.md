@@ -60,6 +60,19 @@ export default {
 }
 ```
 
+### Options
+
+Functions `exclude` amd `include` accept an optional `options` object with following properties:
+
+#### `mainFields`
+
+Optional. This should match your [`resolve.mainFields`](https://webpack.js.org/configuration/resolve/#resolve-mainfields)
+if you specify it in your webpack config, else it assumes the default of `['browser', 'module', 'main']`.
+This is used to determine modules published with ES2015+ module support as `module`,
+which by default webpack will load in preference to `main`, so that its
+`engines` field probably reflects `main` support rather than `module` support,
+so we must assume we must transpile the `module` version.
+
 ## Issues
 
 * https://github.com/webpack/webpack/issues/2031
