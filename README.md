@@ -70,6 +70,7 @@ export default {
 ## Reference
 
 * https://github.com/babel/babel-preset-env#targetsuglify
+* https://webpack.js.org/configuration/resolve/#resolve-mainfields
 * http://2ality.com/2017/07/npm-packages-via-babel.html
 * http://2ality.com/2017/06/pkg-esnext.html
 * https://github.com/SamVerschueren/babel-engine-plugin
