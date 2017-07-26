@@ -56,6 +56,14 @@ describe('index', () => {
     it('is false when option passed does not include module', () => {
       expect(getHasModuleInMainFields({ mainFields: ['main'] })).toBe(false)
     })
+
+    it('is false when option passed includes module last', () => {
+      expect(getHasModuleInMainFields({ mainFields: ['main', 'module'] })).toBe(false)
+    })
+
+    it('is true when option passed includes module first', () => {
+      expect(getHasModuleInMainFields({ mainFields: ['module', 'main'] })).toBe(true)
+    })
   })
 
   describe('exclude', () => {

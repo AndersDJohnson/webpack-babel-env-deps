@@ -22,7 +22,12 @@ export function getModuleNeedsBabel (values, name, { hasModuleInMainFields } = {
 }
 
 export function getHasModuleInMainFields (options = {}) {
-  return !options.mainFields || options.mainFields.indexOf('module') >= 0
+  const { mainFields } = options
+  return !mainFields || (
+    mainFields.indexOf('module') >= 0 && (
+      mainFields.indexOf('main') === -1 || mainFields.indexOf('module') < mainFields.indexOf('main')
+    )
+  )
 }
 
 function getNeedBabel (pathInPkg = process.cwd(), options = {}) {
