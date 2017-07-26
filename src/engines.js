@@ -6,7 +6,10 @@ export default function getEngines (pathInPkg, { depth = 1 } = {}) {
 
   const it = pkg => {
     if (engines.hasOwnProperty(pkg.name)) return true
-    engines[pkg.name] = pkg.engines
+    engines[pkg.name] = {
+      engines: pkg.engines,
+      module: pkg.module
+    }
   }
 
   try {

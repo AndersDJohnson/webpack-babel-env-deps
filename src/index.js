@@ -8,23 +8,33 @@ import {
 } from './node-modules-regex'
 import normalizeSemver from './semver-normalize'
 
+export function getModuleNeedsBabel (values, name, { hasModuleInMainFields } = {}) {
+  const { engines, module } = values
+  // always transpile if we have a module
+  if (hasModuleInMainFields && module) {
+    return true
+  }
+  if (!engines) return false
+  const range = engines.node
+  if (!range) return false
+  if (range === '*') return false
+  return _.some(plugins, ({ node }) => !semver.satisfies(normalizeSemver(node), range))
+}
 
-function getNeedBabel (pathInPkg = process.cwd(), options) {
+export function getHasModuleInMainFields (options = {}) {
+  return !options.mainFields || options.mainFields.indexOf('module') >= 0
+}
+
+function getNeedBabel (pathInPkg = process.cwd(), options = {}) {
+  const hasModuleInMainFields = getHasModuleInMainFields(options)
   const modules = getEngines(pathInPkg, options)
 
   const needBabel = _(modules)
-    .map((engines, name) => {
-      if (!engines) return
-      const range = engines.node
-      if (!range) return
-      if (range === '*') return
-      const needsBabel = _.some(plugins, ({ node }) => !semver.satisfies(normalizeSemver(node), range))
-      return {
-        name,
-        engines,
-        needsBabel
-      }
-    })
+    .map((values, name) => ({
+      name,
+      ...values,
+      needsBabel: !!getModuleNeedsBabel(values, name, { ...options, hasModuleInMainFields })
+    }))
     .compact()
     .filter(({ needsBabel }) => needsBabel)
     .value()
