@@ -1,6 +1,6 @@
 import resolve from 'resolve'
 import _ from 'lodash'
-import findRoot from 'find-root'
+import pkgDir from 'pkg-dir'
 
 import requirePackage from './require-package'
 
@@ -25,7 +25,7 @@ function walkDeps (deps, it, root) {
 export default function walk (pathInPkg, it, isRoot = true) {
   let pkgRoot
   try {
-    pkgRoot = findRoot(pathInPkg)
+    pkgRoot = pkgDir.sync(pathInPkg)
   } catch (err) {
     console.error(pathInPkg, err)
     return
