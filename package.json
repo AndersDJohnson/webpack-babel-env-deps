@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "test": "yarn lint && yarn unit",
-    "unit": "jest --coverage && codecov",
+    "unit": "jest && codecov",
     "lint": "eslint src",
     "precommit": "yarn test",
     "prepush": "yarn test",
@@ -41,6 +41,17 @@
     "strip-indent": "^2.0.0",
     "webpack": "^3.3.0",
     "webpack-node-externals": "^1.6.0"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
   },
   "repository": "AndersDJohnson/webpack-babel-env-deps",
   "keywords": [
