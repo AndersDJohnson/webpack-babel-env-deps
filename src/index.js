@@ -53,7 +53,7 @@ export function getHasESNextInMainFields (options = {}) {
   )
 }
 
-function getNeedBabel (pathInPkg = process.cwd(), options = {}) {
+export function getNeedBabel (pathInPkg = process.cwd(), options = {}) {
   const hasModuleInMainFields = getHasESNextInMainFields(options)
   const modules = getEngines(pathInPkg, options)
 
