@@ -11,9 +11,10 @@
     "lint": "yarn lint:src && yarn lint:md",
     "lint:src": "eslint src",
     "lint:md": "eslint **/*.md",
+    "build": "webpack",
     "precommit": "yarn test",
     "prepush": "yarn test",
-    "prepublishOnly": "yarn test"
+    "prepublishOnly": "yarn test & yarn build"
   },
   "dependencies": {
     "babel-preset-env": "^1.6.0",
