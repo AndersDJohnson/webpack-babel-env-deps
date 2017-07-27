@@ -1,4 +1,4 @@
-import resolve from 'resolve'
+import resolve from 'resolve-pkg'
 import _ from 'lodash'
 import pkgDir from 'pkg-dir'
 
@@ -8,9 +8,8 @@ function walkDeps (deps, it, root) {
   _.forEach(deps, (__, name) => {
     let depPath
     try {
-      depPath = resolve.sync(name, {
-        basedir: root,
-        packageFilter: pkg => ({ ...pkg, main: pkg.main || 'package.json' })
+      depPath = resolve(name, {
+        cwd: root
       })
     } catch (err) {
       // maybe `name` module doesn't have a `main` field in its `package.json`

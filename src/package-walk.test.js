@@ -8,10 +8,8 @@ jest.mock('path', () => ({
   join: jest.fn(() => './__fixtures__/root')
 }))
 
-jest.mock('resolve', () => ({
-  sync: jest.fn(() => {
-    throw new Error('test')
-  })
+jest.mock('resolve-pkg', () => jest.fn(() => {
+  throw new Error('test')
 }))
 
 jest.mock('./require-package', () => jest.fn(() => ({
