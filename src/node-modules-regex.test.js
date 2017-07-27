@@ -19,11 +19,11 @@ describe('node-modules-regex', () => {
 
   describe('exclude', () => {
     it('does not match excluded', () => {
-      expect('node_modules/foo/index.js').not.toMatch(exclude(['foo']))
+      expect('node_modules/foo/index.js').toMatch(exclude(['foo']))
     })
 
     it('matches non-excluded', () => {
-      expect('node_modules/bar/index.js').not.toMatch(exclude(['foo']))
+      expect('node_modules/bar/index.js').toMatch(exclude(['foo']))
     })
 
     it('empty excludes all node modules', () => {
