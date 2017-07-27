@@ -53,7 +53,8 @@ export function getHasESNextInMainFields (options = {}) {
   )
 }
 
-export function getNeedBabel (pathInPkg = process.cwd(), options = {}) {
+export function getNeedBabel (options) {
+  const pathInPkg = options.path || process.cwd()
   const hasModuleInMainFields = getHasESNextInMainFields(options)
   const modules = getEngines(pathInPkg, options)
 
@@ -72,16 +73,16 @@ export function getNeedBabel (pathInPkg = process.cwd(), options = {}) {
   return needBabel.map(mod => mod.name).sort()
 }
 
-export function exclude (pathInPkg, options) {
-  const names = getNeedBabel(pathInPkg, options)
+export function exclude (options = {}) {
+  const names = getNeedBabel(options)
 
-  return excludeRegex(names)
+  return excludeRegex(names, options)
 }
 
-export function include (pathInPkg, options) {
-  const names = getNeedBabel(pathInPkg, options)
+export function include (options = {}) {
+  const names = getNeedBabel(options)
 
-  return includeRegex(names)
+  return includeRegex(names, options)
 }
 
 export default {
