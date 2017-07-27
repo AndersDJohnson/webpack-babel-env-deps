@@ -77,7 +77,7 @@ so we must assume we must transpile the `module`/`jsnext:main` version.
 
 `?array | ?string | ?function`
 
-Optional. For this adds exceptions to the inclusion or exclusion rules.
+Optional. This adds exceptions to the inclusion or exclusion rules.
 For example, `include({ except: ['foo'] })` will prevent `foo` from being
 included for transpilation even if it would normally meet the criteria.
 And `exclude({ except: ['foo'] })` will include `foo` for transpilation
