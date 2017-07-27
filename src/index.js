@@ -26,10 +26,10 @@ export function getModuleNeedsBabel (values, name, { hasModuleInMainFields } = {
  */
 export const esNextFields = ['module', 'jsnext:main']
 
-export const isESNextField = field => esNextFields.includes(field)
+export const isESNextField = field => _.includes(esNextFields, field)
 
 export function getHasESNextField (mainFields = []) {
-  return mainFields.some(mainField => esNextFields.includes(mainField))
+  return mainFields.some(mainField => _.includes(esNextFields, mainField))
 }
 
 export function getIndexOfESNextField (mainFields = []) {
@@ -38,7 +38,7 @@ export function getIndexOfESNextField (mainFields = []) {
 
 export function isESNextFieldBeforeMainField (mainFields = []) {
   return mainFields.length >= 0 && (
-    !mainFields.includes('main') || (
+    !_.includes(mainFields, 'main') || (
       getHasESNextField(mainFields) && getIndexOfESNextField(mainFields) < mainFields.indexOf('main')
 
     )
