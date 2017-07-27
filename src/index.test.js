@@ -1,3 +1,5 @@
+/* eslint-env jest */
+
 import path from 'path'
 import { exclude, include, getModuleNeedsBabel, getHasModuleInMainFields } from '.'
 import excludeFixture from './__fixtures__/exclude'
@@ -5,7 +7,7 @@ import includeFixture from './__fixtures__/include'
 
 describe('index', () => {
   describe('getModuleNeedsBabel', () => {
-    it ('is true when has module in main fields option and has module', () => {
+    it('is true when has module in main fields option and has module', () => {
       expect(getModuleNeedsBabel(
         {
           module: 'index.js'
@@ -17,7 +19,7 @@ describe('index', () => {
       )).toEqual(true)
     })
 
-    it ('is false when has module in main fields option but no module', () => {
+    it('is false when has module in main fields option but no module', () => {
       expect(getModuleNeedsBabel(
         {},
         'foo',
@@ -27,7 +29,7 @@ describe('index', () => {
       )).toEqual(false)
     })
 
-    it ('is false when not has module in main fields option and module', () => {
+    it('is false when not has module in main fields option and module', () => {
       expect(getModuleNeedsBabel(
         {
           module: 'index.js'
@@ -36,7 +38,7 @@ describe('index', () => {
       )).toEqual(false)
     })
 
-    it ('is false when not has module in main fields option and no module', () => {
+    it('is false when not has module in main fields option and no module', () => {
       expect(getModuleNeedsBabel(
         {},
         'foo'

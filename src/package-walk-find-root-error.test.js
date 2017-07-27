@@ -1,5 +1,6 @@
-import walk from './package-walk'
+/* eslint-env jest */
 
+import walk from './package-walk'
 
 jest.mock('find-root', () => jest.fn(() => { throw new Error('test') }))
 
@@ -16,7 +17,6 @@ jest.mock('./require-package', () => jest.fn(() => ({
     ok: '1.0.0'
   }
 })))
-
 
 describe('package-walk', () => {
   describe('walk', () => {

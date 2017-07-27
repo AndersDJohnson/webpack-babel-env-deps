@@ -1,3 +1,5 @@
+/* eslint-env jest */
+
 import requirePackage from './require-package'
 
 describe('require-package', () => {

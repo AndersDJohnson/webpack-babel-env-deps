@@ -4,7 +4,6 @@ import findRoot from 'find-root'
 
 import requirePackage from './require-package'
 
-
 function walkDeps (deps, it, root) {
   _.each(deps, (__, name) => {
     let depPath
