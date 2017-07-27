@@ -2,7 +2,7 @@
 
 import walk from './package-walk'
 
-jest.mock('find-root')
+jest.mock('pkg-dir')
 
 jest.mock('path', () => ({
   join: jest.fn(() => './__fixtures__/root')
