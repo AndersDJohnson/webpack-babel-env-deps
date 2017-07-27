@@ -21,17 +21,40 @@ export function getModuleNeedsBabel (values, name, { hasModuleInMainFields } = {
   return _.some(plugins, ({ node }) => !semver.satisfies(normalizeSemver(node), range))
 }
 
-export function getHasModuleInMainFields (options = {}) {
-  const { mainFields } = options
-  return !mainFields || (
-    mainFields.indexOf('module') >= 0 && (
-      mainFields.indexOf('main') === -1 || mainFields.indexOf('module') < mainFields.indexOf('main')
+/**
+ * `module` in webpack 3, maybe also `jsnext:main` in webpack 2
+ */
+export const esNextFields = ['module', 'jsnext:main']
+
+export const isESNextField = field => esNextFields.includes(field)
+
+export function getHasESNextField (mainFields = []) {
+  return mainFields.some(mainField => esNextFields.includes(mainField))
+}
+
+export function getIndexOfESNextField (mainFields = []) {
+  return mainFields.findIndex(isESNextField)
+}
+
+export function isESNextFieldBeforeMainField (mainFields = []) {
+  return mainFields.length >= 0 && (
+    !mainFields.includes('main') || (
+      getHasESNextField(mainFields) && getIndexOfESNextField(mainFields) < mainFields.indexOf('main')
+
     )
   )
 }
 
+export function getHasESNextInMainFields (options = {}) {
+  const { mainFields } = options
+  const usesDefaultMainFields = !mainFields
+  return usesDefaultMainFields || (
+    isESNextFieldBeforeMainField(mainFields)
+  )
+}
+
 function getNeedBabel (pathInPkg = process.cwd(), options = {}) {
-  const hasModuleInMainFields = getHasModuleInMainFields(options)
+  const hasModuleInMainFields = getHasESNextInMainFields(options)
   const modules = getEngines(pathInPkg, options)
 
   const needBabel = _(modules)
