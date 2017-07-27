@@ -1,5 +1,6 @@
-import normalizeSemver from './semver-normalize'
+/* eslint-env jest */
 
+import normalizeSemver from './semver-normalize'
 
 describe('normalizeSemver', () => {
   it('1', () => {

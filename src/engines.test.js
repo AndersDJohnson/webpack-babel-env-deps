@@ -1,10 +1,10 @@
-import getEngines from './engines'
+/* eslint-env jest */
 
+import getEngines from './engines'
 
 jest.mock('./package-walk', () => () => {
   throw new Error('test')
 })
-
 
 describe('engines', () => {
   it('throws', () => {
