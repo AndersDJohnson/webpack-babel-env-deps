@@ -5,7 +5,7 @@ import findRoot from 'find-root'
 import requirePackage from './require-package'
 
 function walkDeps (deps, it, root) {
-  _.each(deps, (__, name) => {
+  _.forEach(deps, (__, name) => {
     let depPath
     try {
       depPath = resolve.sync(name, {
