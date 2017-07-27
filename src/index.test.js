@@ -141,7 +141,23 @@ describe('index', () => {
   describe('exclude', () => {
     it('works', () => {
       expect(
-        exclude(path.join(__dirname, '..'))
+        exclude()
+      ).toEqual(excludeFixture)
+    })
+
+    it('works with path', () => {
+      expect(
+        exclude({
+          path: path.join(__dirname, '..')
+        })
+      ).toEqual(excludeFixture)
+    })
+
+    it('works with except option', () => {
+      expect(
+        exclude(path.join(__dirname, '..'), {
+          except: () => true
+        })
       ).toEqual(excludeFixture)
     })
   })
@@ -149,7 +165,15 @@ describe('index', () => {
   describe('include', () => {
     it('works', () => {
       expect(
-        include(path.join(__dirname, '..'))
+        include()
+      ).toEqual(includeFixture)
+    })
+
+    it('works with path', () => {
+      expect(
+        include({
+          path: path.join(__dirname, '..')
+        })
       ).toEqual(includeFixture)
     })
   })
