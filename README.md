@@ -36,7 +36,7 @@ export default {
       {
         test: /\.js$/,
         exclude: [
-          babelEnvDeps.exclude() // returns /node_modules\/(?!(detect-indent|request|...)).*/
+          babelEnvDeps.exclude() // returns /node_modules\/(?!(/|\\)(detect-indent|request|...)(/|\\))/
         ],
         use: {
           loader: 'babel-loader',

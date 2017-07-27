@@ -3,7 +3,7 @@ export function group (names) {
 }
 
 export function excludeAsString (names) {
-  return names.length === 0 ? `node_modules/.*` : `node_modules/(?!${group(names)})/.*`
+  return names.length === 0 ? `node_modules/.*` : `node_modules/(?!(/|\\\\)${group(names)}(/|\\\\))`
 }
 
 export function includeAsString (names) {
