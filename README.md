@@ -64,12 +64,24 @@ Functions `exclude` amd `include` accept an optional `options` object with follo
 
 #### `mainFields`
 
+`?array`
+
 Optional. This should match your [`resolve.mainFields`](https://webpack.js.org/configuration/resolve/#resolve-mainfields)
 if you specify it in your webpack config, else it assumes the default of `['browser', 'module', 'main']`.
 This is used to determine modules published with ES2015+ module support as `module`/`jsnext:main`,
 which by default webpack will load in preference to `main`, so that its
 `engines` field probably reflects `main` support rather than `module`/`jsnext:main` support,
 so we must assume we must transpile the `module`/`jsnext:main` version.
+
+#### `except`
+
+`?array | ?string | ?function`
+
+Optional. For this adds exceptions to the inclusion or exclusion rules.
+For example, `include({ except: ['foo'] })` will prevent `foo` from being
+included for transpilation even if it would normally meet the criteria.
+And `exclude({ except: ['foo'] })` will include `foo` for transpilation
+even if it doesn't otherwise meet transpilation criteria.
 
 ## Issues
 
