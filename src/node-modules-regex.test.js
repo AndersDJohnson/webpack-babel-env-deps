@@ -11,6 +11,10 @@ describe('node-modules-regex', () => {
     it('does not match non-included', () => {
       expect('node_modules/bar/index.js').not.toMatch(include(['foo']))
     })
+
+    it('empty does not match non-included', () => {
+      expect('node_modules/bar/index.js').not.toMatch(include())
+    })
   })
 
   describe('exclude', () => {
@@ -20,6 +24,10 @@ describe('node-modules-regex', () => {
 
     it('matches non-excluded', () => {
       expect('node_modules/bar/index.js').not.toMatch(exclude(['foo']))
+    })
+
+    it('empty excludes all node modules', () => {
+      expect('node_modules/bar/index.js').toMatch(exclude())
     })
   })
 })
