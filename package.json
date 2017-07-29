@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "babel-preset-env": "^1.6.0",
+    "debug": "^2.6.8",
     "lodash": "^4.17.4",
     "pkg-dir": "^2.0.0",
     "resolve-pkg": "^1.0.0",

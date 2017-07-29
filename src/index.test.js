@@ -18,21 +18,34 @@ describe('index', () => {
     it('is true when has module in main fields option and has module', () => {
       expect(getModuleNeedsBabel(
         {
+          name: 'foo',
           module: 'index.js'
         },
-        'foo',
         {
-          hasModuleInMainFields: true
+          hasEsNextInMainFields: true
+        }
+      )).toEqual(true)
+    })
+
+    it('is true when has module in main fields option and has jsnext:main', () => {
+      expect(getModuleNeedsBabel(
+        {
+          name: 'foo',
+          'jsnext:main': 'index.js'
+        },
+        {
+          hasEsNextInMainFields: true
         }
       )).toEqual(true)
     })
 
     it('is false when has module in main fields option but no module', () => {
       expect(getModuleNeedsBabel(
-        {},
-        'foo',
         {
-          hasModuleInMainFields: true
+          name: 'foo'
+        },
+        {
+          hasEsNextInMainFields: true
         }
       )).toEqual(false)
     })
@@ -40,16 +53,26 @@ describe('index', () => {
     it('is false when not has module in main fields option and module', () => {
       expect(getModuleNeedsBabel(
         {
+          name: 'foo',
           module: 'index.js'
-        },
-        'foo'
+        }
+      )).toEqual(false)
+    })
+
+    it('is false when not has module in main fields option and jsnext:main', () => {
+      expect(getModuleNeedsBabel(
+        {
+          name: 'foo',
+          'jsnext:main': 'index.js'
+        }
       )).toEqual(false)
     })
 
     it('is false when not has module in main fields option and no module', () => {
       expect(getModuleNeedsBabel(
-        {},
-        'foo'
+        {
+          name: 'foo'
+        }
       )).toEqual(false)
     })
   })
