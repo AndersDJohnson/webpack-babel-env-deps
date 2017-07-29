@@ -5,6 +5,7 @@ import {
   exclude,
   include,
   getModuleNeedsBabel,
+  getNeedBabelFromPackageAndDependencies,
   getHasESNextInMainFields,
   getHasESNextField,
   getIndexOfESNextField,
@@ -198,6 +199,169 @@ describe('index', () => {
           path: path.join(__dirname, '..')
         })
       ).toEqual(includeFixture)
+    })
+  })
+
+  describe('getNeedBabelFromPackageAndDependencies', () => {
+    it('works', () => {
+      const pkg = {}
+      const dependencies = {}
+      const options = {}
+
+      const needs = getNeedBabelFromPackageAndDependencies(pkg, dependencies, options)
+
+      expect(needs).toEqual([])
+    })
+
+    it('works with deps', () => {
+      const pkg = {}
+      const dependencies = {
+        foo: {
+          name: 'foo',
+          engines: {
+            node: '>=4'
+          }
+        }
+      }
+      const options = {}
+
+      const needs = getNeedBabelFromPackageAndDependencies(pkg, dependencies, options)
+
+      expect(needs).toEqual(['foo'])
+    })
+
+    it('works with host engines equal', () => {
+      const pkg = {
+        engines: {
+          node: '>=4'
+        }
+      }
+      const dependencies = {
+        foo: {
+          name: 'foo',
+          engines: {
+            node: '>=4'
+          }
+        }
+      }
+      const options = {}
+
+      const needs = getNeedBabelFromPackageAndDependencies(pkg, dependencies, options)
+
+      expect(needs).toEqual([])
+    })
+
+    it('works with host engines less', () => {
+      const pkg = {
+        engines: {
+          node: '>=1'
+        }
+      }
+      const dependencies = {
+        foo: {
+          name: 'foo',
+          engines: {
+            node: '>=4'
+          }
+        }
+      }
+      const options = {}
+
+      const needs = getNeedBabelFromPackageAndDependencies(pkg, dependencies, options)
+
+      expect(needs).toEqual(['foo'])
+    })
+
+    it('works with host engines greater', () => {
+      const pkg = {
+        engines: {
+          node: '>=6'
+        }
+      }
+      const dependencies = {
+        foo: {
+          name: 'foo',
+          engines: {
+            node: '>=4'
+          }
+        }
+      }
+      const options = {}
+
+      const needs = getNeedBabelFromPackageAndDependencies(pkg, dependencies, options)
+
+      expect(needs).toEqual([])
+    })
+
+    it('works with host engines overridden via options', () => {
+      const pkg = {
+        engines: {
+          node: '>=6'
+        }
+      }
+      const dependencies = {
+        foo: {
+          name: 'foo',
+          engines: {
+            node: '>=4'
+          }
+        }
+      }
+      const options = {
+        engines: {
+          node: '>=1'
+        }
+      }
+
+      const needs = getNeedBabelFromPackageAndDependencies(pkg, dependencies, options)
+
+      expect(needs).toEqual(['foo'])
+    })
+
+    it('works with host engines suppressed via options', () => {
+      const pkg = {
+        engines: {
+          node: '>=6'
+        }
+      }
+      const dependencies = {
+        foo: {
+          name: 'foo',
+          engines: {
+            node: '>=4'
+          }
+        }
+      }
+      const options = {
+        engines: false
+      }
+
+      const needs = getNeedBabelFromPackageAndDependencies(pkg, dependencies, options)
+
+      expect(needs).toEqual(['foo'])
+    })
+
+    it('works with host engines enabled via options', () => {
+      const pkg = {
+        engines: {
+          node: '>=1'
+        }
+      }
+      const dependencies = {
+        foo: {
+          name: 'foo',
+          engines: {
+            node: '>=4'
+          }
+        }
+      }
+      const options = {
+        engines: true
+      }
+
+      const needs = getNeedBabelFromPackageAndDependencies(pkg, dependencies, options)
+
+      expect(needs).toEqual(['foo'])
     })
   })
 })
