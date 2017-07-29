@@ -5,17 +5,20 @@
 [![Travis CI](https://img.shields.io/travis/AndersDJohnson/webpack-babel-env-deps.svg)](https://travis-ci.org/AndersDJohnson/webpack-babel-env-deps)
 [![Codecov](https://img.shields.io/codecov/c/github/AndersDJohnson/webpack-babel-env-deps.svg)](https://codecov.io/gh/AndersDJohnson/webpack-babel-env-deps)
 
-A webpack helper to find dependencies of your project that require transpilation with Babel (and [`babel-preset-env`][babel-preset-env]),
-based on minimum Node.js engines ([`engines`][engines] in `package.json`) or ES2015/ES6+ source ([`module`][module]/`jsnext:main` in `package.json`), which assume features provided by plugins and polyfills from [`babel-preset-env`][babel-preset-env], and are [unsupported](https://github.com/babel/babel-preset-env#targetsuglify) by the [native UglifyJS webpack plugin](https://github.com/webpack-contrib/uglifyjs-webpack-plugin)
-through at least verison `3.x`.
+A webpack helper to find dependencies of your project that require transpilation with Babel (and [`babel-preset-env`][babel-preset-env])
+by comparing your minimum Node.js engine against theirs ([`engines`][engines] in `package.json`), and/or by determining
+their minimum Node.js engine or published
+ES2015/ES6+ source ([`module`][module]/`jsnext:main` in `package.json`)
+to require features provided by plugins and polyfills from [`babel-preset-env`][babel-preset-env].
+
+This mainly aims to solve errors during minification in production builds, since some ES2015+ features like arrow functions
+are [unsupported](https://github.com/babel/babel-preset-env#targetsuglify) by the
+[native UglifyJS webpack plugin](https://github.com/webpack-contrib/uglifyjs-webpack-plugin) through at least `3.x`.
+See [issues](#issues) below for examples of this error and affected modules.
 
 This module generates regular expressions to be used in the `exclude` or `include` properties
 of your [`babel-loader`][babel-loader] rule in your configuration.
 
-For example, [`strip-indent`](https://github.com/sindresorhus/strip-indent)
-(as of July 2017) specifies a minimum Node.js engine of [`>=4`](https://github.com/sindresorhus/strip-indent/blob/master/package.json#L13)
-and uses features like arrow functions (see [strip-indent#1][strip-indent-1]) that must be transpiled.
-See [issues](#issues) below for more examples.
 
 ## Install
 
@@ -82,6 +85,13 @@ For example, `include({ except: ['foo'] })` will prevent `foo` from being
 included for transpilation even if it would normally meet the criteria.
 And `exclude({ except: ['foo'] })` will include `foo` for transpilation
 even if it doesn't otherwise meet transpilation criteria.
+
+#### `engines`
+
+`?object | ?boolean`
+
+Optional. This optionally overrides the `engines` key in your `package.json`.
+Or set to `false` to suppress any use of your `engines` for determining dependencies to transpile.
 
 ## Issues
 

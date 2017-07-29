@@ -1,11 +1,12 @@
 import walk from './package-walk'
 
+// TODO: Implement depth option.
 export default function getDependencies (pathInPkg, { depth = 1 } = {}) {
-  const engines = {}
+  const dependencies = {}
 
   const it = pkg => {
-    if (engines.hasOwnProperty(pkg.name)) return true
-    engines[pkg.name] = pkg
+    if (dependencies.hasOwnProperty(pkg.name)) return true
+    dependencies[pkg.name] = pkg
   }
 
   try {
@@ -14,5 +15,5 @@ export default function getDependencies (pathInPkg, { depth = 1 } = {}) {
     console.error(pathInPkg, err)
   }
 
-  return engines
+  return dependencies
 }
