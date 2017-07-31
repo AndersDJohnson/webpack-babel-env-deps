@@ -9,6 +9,6 @@
   },
   "confirm": true,
   "publishTag": "latest",
-  "prePublishScript": false,
+  "prePublishScript": "yarn test && yarn build",
   "postPublishScript": false
 }
