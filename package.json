@@ -1,6 +1,6 @@
 {
   "name": "webpack-babel-env-deps",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "main": "dist/index.js",
   "description": "Find dependencies to transpile with Babel.",
   "author": "AndersDJohnson <AndersDJohnson@users.noreply.github.com>",
