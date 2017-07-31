@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "babel-preset-env": "^1.6.0",
+    "babel-runtime": "^6.25.0",
     "debug": "^2.6.8",
     "lodash": "^4.17.4",
     "pkg-dir": "^2.0.0",
@@ -31,7 +32,6 @@
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-runtime": "^6.25.0",
     "codecov": "^2.2.0",
     "eslint": "^4.3.0",
     "eslint-config-standard": "^10.2.1",
