@@ -11,7 +11,7 @@
     "lint": "yarn lint:src && yarn lint:md",
     "lint:src": "eslint src",
     "lint:md": "eslint **/*.md",
-    "lint:dist": "eslint --no-eslintrc -c .eslintrc-dist.js dist",
+    "lint:dist": "eslint --no-eslintrc --config .eslintrc-dist.js dist",
     "build": "rm -rf dist && webpack && yarn lint:dist",
     "precommit": "yarn test",
     "prepush": "yarn test && yarn build",
