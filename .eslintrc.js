@@ -1,7 +1,13 @@
 module.exports = {
   root: true,
-  extends: 'standard',
+  extends: [
+    'eslint:recommended',
+    'standard'
+  ],
   plugins: [
     'markdown'
-  ]
+  ],
+  rules: {
+    'no-console': 0
+  }
 }

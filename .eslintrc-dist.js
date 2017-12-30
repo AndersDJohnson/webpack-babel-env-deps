@@ -7,6 +7,6 @@ module.exports = {
     'plugin:node/recommended'
   ],
   rules: {
-
+    'no-console': 0
   }
 }
