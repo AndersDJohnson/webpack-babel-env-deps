@@ -1,5 +1,7 @@
 import _ from 'lodash'
 
+const sepRex = '(/|\\\\)'
+
 export function group (names) {
   return `(${names.join('|')})`
 }
@@ -9,7 +11,7 @@ export function excludeAsString (names, { except }) {
     if (typeof except === 'string') names = names.slice().concat(except)
     else names = names.slice().concat(except)
   }
-  return names.length === 0 ? `node_modules/.*` : `node_modules(?!(/|\\\\)${group(names)}(/|\\\\))`
+  return names.length === 0 ? `node_modules/.*` : `node_modules(?!${sepRex}${group(names)}${sepRex})`
 }
 
 export function includeAsString (names, { except }) {
@@ -18,7 +20,7 @@ export function includeAsString (names, { except }) {
     if (typeof except === 'string') return except !== name
     return !_.includes(except, name)
   }
-  return `node_modules/${group(names.filter(filterFn))}/.*`
+  return `node_modules${sepRex}${group(names.filter(filterFn))}${sepRex}.*`
 }
 
 export function includeAsRegExp (names, options) {
