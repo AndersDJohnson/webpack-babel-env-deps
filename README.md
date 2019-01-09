@@ -93,6 +93,17 @@ even if it doesn't otherwise meet transpilation criteria.
 Optional. This optionally overrides the `engines` key in your `package.json`.
 Or set to `false` to suppress any use of your `engines` for determining dependencies to transpile.
 
+#### `defaultEngines`
+
+`?object | ?boolean`
+
+Optional. Default is `false`.
+This optionally provides the `engines` key when missing from any dependencies.
+For example, `exclude({ defaultEngines: { 'node': '>= 4' } })` will assume that
+dependencies without `engines` require node 4, and determine transpilation normally.
+Or set to `true` to enable transpilation for dependencies without enough information.
+For example, `exclude({ defaultEngines: true })`.
+
 ## Issues
 
 * https://github.com/webpack/webpack/issues/2031
