@@ -184,6 +184,32 @@ describe('index', () => {
         })
       ).toEqual(excludeFixture)
     })
+
+    it('works with defaultEngines false', () => {
+      expect(
+        exclude({ defaultEngines: false })
+      ).toEqual(excludeFixture)
+    })
+
+    it('works with defaultEngines true', () => {
+      // Assume that some packages don't have engines.
+      expect(
+        exclude({ defaultEngines: true })
+      ).not.toEqual(excludeFixture)
+    })
+
+    it('works with defaultEngines node >=0.10', () => {
+      expect(
+        exclude({ defaultEngines: { node: '>=0.10' } })
+      ).toEqual(excludeFixture)
+    })
+
+    it('works with defaultEngines node >=100', () => {
+      // This also forces transpilation.
+      expect(
+        exclude({ defaultEngines: { node: '>=100' } })
+      ).not.toEqual(excludeFixture)
+    })
   })
 
   describe('include', () => {
