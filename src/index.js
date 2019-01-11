@@ -15,14 +15,23 @@ export function getPluginsThatDontSatisfyModuleRange (plugins, range) {
   return _.pickBy(plugins, ({ node }) => !semver.satisfies(normalizeSemver(node), range))
 }
 
-export function getModuleNeedsBabel (pkg, { hasEsNextInMainFields, hostEngines } = {}) {
-  const { engines } = pkg
+export function getModuleNeedsBabel (pkg, { hasEsNextInMainFields, hostEngines, defaultEngines } = {}) {
+  let { engines } = pkg
   const hasEsNextField = getHasESNextField(Object.keys(pkg))
   // always transpile if we have an esnext field
   if (hasEsNextInMainFields && hasEsNextField) {
     return true
   }
-  if (!engines) return false
+  if (!engines) {
+    if (defaultEngines) {
+      if (typeof defaultEngines !== 'object') {
+        return true
+      }
+      engines = defaultEngines
+    } else {
+      return false
+    }
+  }
   const range = engines.node
   if (!range) return false
   if (range === '*') return false
