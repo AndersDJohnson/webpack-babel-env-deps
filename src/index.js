@@ -28,8 +28,9 @@ export function getModuleNeedsBabel (pkg, { hasEsNextInMainFields, hostEngines, 
         return true
       }
       engines = defaultEngines
+    } else {
+      return false
     }
-    return false
   }
   const range = engines.node
   if (!range) return false
