@@ -1,8 +1,8 @@
 /* eslint-env jest */
 
-import getDependencies from './get-dependencies'
+import getDependencies from '../get-dependencies'
 
-jest.mock('./package-walk', () => () => {
+jest.mock('../package-walk', () => () => {
   throw new Error('test')
 })
 

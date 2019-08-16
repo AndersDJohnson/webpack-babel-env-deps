@@ -10,9 +10,9 @@ import {
   getHasESNextField,
   getIndexOfESNextField,
   isESNextFieldBeforeMainField
-} from '.'
-import excludeFixture from './__fixtures__/exclude'
-import includeFixture from './__fixtures__/include'
+} from '..'
+import excludeFixture from '../__fixtures__/exclude'
+import includeFixture from '../__fixtures__/include'
 
 describe('index', () => {
   describe('getModuleNeedsBabel', () => {

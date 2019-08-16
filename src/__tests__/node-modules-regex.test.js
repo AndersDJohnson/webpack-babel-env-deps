@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import { include, exclude } from './node-modules-regex'
+import { include, exclude } from '../node-modules-regex'
 
 describe('node-modules-regex', () => {
   describe('include', () => {

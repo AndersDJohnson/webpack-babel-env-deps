@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import walk from './package-walk'
+import walk from '../package-walk'
 
 jest.mock('pkg-dir')
 
@@ -12,7 +12,7 @@ jest.mock('resolve-pkg', () => jest.fn(() => {
   throw new Error('test')
 }))
 
-jest.mock('./require-package', () => jest.fn(() => ({
+jest.mock('../require-package', () => jest.fn(() => ({
   dependencies: {
     ok: '1.0.0'
   }

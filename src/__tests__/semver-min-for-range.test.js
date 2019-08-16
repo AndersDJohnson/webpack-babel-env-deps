@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import minForRange from './semver-min-for-range'
+import minForRange from '../semver-min-for-range'
 
 describe('semver-range-boundaries', () => {
   it('finds patch', () => {

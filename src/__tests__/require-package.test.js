@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import requirePackage from './require-package'
+import requirePackage from '../require-package'
 
 describe('require-package', () => {
   it('works for __non_webpack_require__', () => {
