@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "description": "Find dependencies to transpile with Babel.",
   "engines": {
-    "node": ">6"
+    "node": ">=6"
   },
   "author": "AndersDJohnson <AndersDJohnson@users.noreply.github.com>",
   "license": "MIT",
