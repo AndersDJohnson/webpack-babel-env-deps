@@ -16,6 +16,26 @@ import includeFixture from '../__fixtures__/include'
 
 describe('index', () => {
   describe('getModuleNeedsBabel', () => {
+    it('is false when no node engine', () => {
+      expect(
+        getModuleNeedsBabel({
+          name: 'foo',
+          engines: {}
+        })
+      ).toEqual(false)
+    })
+
+    it('is false when no node engine', () => {
+      expect(
+        getModuleNeedsBabel({
+          name: 'foo',
+          engines: {
+            node: '*'
+          }
+        })
+      ).toEqual(false)
+    })
+
     it('is true when has module in main fields option and has module', () => {
       expect(
         getModuleNeedsBabel(

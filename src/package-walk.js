@@ -17,11 +17,11 @@ function walkDeps(deps, it, root) {
       return
     }
 
-    walk(depPath, it, false)
+    walk(depPath, it)
   })
 }
 
-export default function walk(pathInPkg, it, isRoot = true) {
+export default function walk(pathInPkg, it) {
   let pkgRoot
   try {
     pkgRoot = pkgDir.sync(pathInPkg)
@@ -35,8 +35,4 @@ export default function walk(pathInPkg, it, isRoot = true) {
   if (it(pkg)) return
 
   walkDeps(pkg.dependencies, it, pkgRoot)
-
-  if (isRoot) {
-    walkDeps(pkg.devDependencies, it, pkgRoot)
-  }
 }
