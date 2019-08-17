@@ -1,13 +1,11 @@
 {
-  "presets": ["env"],
-  "plugins": [
-    "transform-object-rest-spread",
+  "presets": [
     [
-      "transform-runtime",
+      "@babel/preset-env",
       {
-        "polyfill": false,
-        "regenerator": true
+        "targets": ["node 6"]
       }
     ]
-  ]
+  ],
+  "plugins": ["@babel/plugin-proposal-object-rest-spread"]
 }

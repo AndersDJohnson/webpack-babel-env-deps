@@ -6,14 +6,14 @@
 [![Travis CI](https://img.shields.io/travis/AndersDJohnson/webpack-babel-env-deps.svg)](https://travis-ci.org/AndersDJohnson/webpack-babel-env-deps)
 [![Codecov](https://img.shields.io/codecov/c/github/AndersDJohnson/webpack-babel-env-deps.svg)](https://codecov.io/gh/AndersDJohnson/webpack-babel-env-deps)
 
-A webpack helper to find dependencies of your project that require transpilation with Babel (and [`babel-preset-env`][babel-preset-env])
+A webpack helper to find dependencies of your project that require transpilation with Babel (and [`@babel/preset-env`][@babel/preset-env])
 by comparing your minimum Node.js engine against theirs ([`engines`][engines] in `package.json`), and/or by determining
 their minimum Node.js engine or published
 ES2015/ES6+ source ([`module`][module]/`jsnext:main` in `package.json`)
-to require features provided by plugins and polyfills from [`babel-preset-env`][babel-preset-env].
+to require features provided by plugins and polyfills from [`@babel/preset-env`][@babel/preset-env].
 
 This mainly aims to solve errors during minification in production builds, since some ES2015+ features like arrow functions
-are [unsupported](https://github.com/babel/babel-preset-env#targetsuglify) by the
+are unsupported by the
 [native UglifyJS webpack plugin](https://github.com/webpack-contrib/uglifyjs-webpack-plugin) through at least `3.x`.
 See [issues](#issues) below for examples of this error and affected modules.
 
@@ -121,7 +121,6 @@ For example, `exclude({ defaultEngines: true })`.
 ## Reference
 
 - https://github.com/facebookincubator/create-react-app/issues/1125#issuecomment-264217076
-- https://github.com/babel/babel-preset-env#targetsuglify
 - https://webpack.js.org/configuration/resolve/#resolve-mainfields
 - http://2ality.com/2017/07/npm-packages-via-babel.html
 - http://2ality.com/2017/06/pkg-esnext.html
@@ -131,4 +130,4 @@ For example, `exclude({ defaultEngines: true })`.
 [module]: https://github.com/rollup/rollup/wiki/pkg.module
 [strip-indent-1]: https://github.com/sindresorhus/strip-indent/issues/1
 [babel-loader]: https://github.com/babel/babel-loader
-[babel-preset-env]: https://github.com/babel/babel-preset-env
+[@babel/preset-env]: https://github.com/babel/babel-preset-env

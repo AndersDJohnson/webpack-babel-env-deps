@@ -3,6 +3,9 @@
   "version": "1.5.0",
   "main": "dist/index.js",
   "description": "Find dependencies to transpile with Babel.",
+  "engines": {
+    "node": ">6"
+  },
   "author": "AndersDJohnson <AndersDJohnson@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
@@ -17,7 +20,7 @@
     "prepush": "yarn test && yarn build"
   },
   "dependencies": {
-    "babel-preset-env": "^1.6.0",
+    "@babel/preset-env": "^7.5.5",
     "debug": "^2.6.8",
     "lodash": "^4.17.4",
     "pkg-dir": "^2.0.0",
@@ -26,13 +29,12 @@
     "semver": "^5.3.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.25.0",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/register": "^7.5.5",
     "babel-eslint": "^10.0.2",
-    "babel-loader": "^7.1.1",
-    "babel-plugin-transform-async-to-generator": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-loader": "^8.0.6",
     "codecov": "^2.2.0",
     "eslint": "^4.3.0",
     "eslint-config-prettier": "^6.0.0",
@@ -44,10 +46,11 @@
     "eslint-plugin-promise": "^3.5.0",
     "has-env": "^1.0.0",
     "husky": "^0.14.3",
-    "jest": "^20.0.4",
+    "jest": "^24.9.0",
     "prettier": "^1.18.2",
     "strip-indent": "^2.0.0",
-    "webpack": "^3.3.0",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.6",
     "webpack-node-externals": "^1.6.0"
   },
   "jest": {

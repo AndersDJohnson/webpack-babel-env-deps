@@ -2,13 +2,9 @@ import path from 'path'
 import nodeExternals from 'webpack-node-externals'
 import babelEnvDeps from './src'
 
-const here = p => path.join(__dirname, p)
-
 export default {
-  entry: './src/index.js',
+  mode: 'production',
   output: {
-    path: here('dist'),
-    filename: 'index.js',
     libraryTarget: 'commonjs2'
   },
   target: 'node',
@@ -22,10 +18,7 @@ export default {
           // generates: /node_modules\/(?!(detect-indent|request)).*/
         ],
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env']
-          }
+          loader: 'babel-loader'
         }
       }
     ]
