@@ -1,4 +1,5 @@
 # webpack-babel-env-deps
+
 > Find dependencies to transpile with Babel.
 
 [![npm](https://img.shields.io/npm/v/webpack-babel-env-deps.svg)](https://www.npmjs.com/package/webpack-babel-env-deps)
@@ -19,14 +20,13 @@ See [issues](#issues) below for examples of this error and affected modules.
 This module generates regular expressions to be used in the `exclude` or `include` properties
 of your [`babel-loader`][babel-loader] rule in your configuration.
 
-
 ## Install
 
-[![yarn add -D webpack-babel-env-deps (copy)](https://copyhaste.com/i?t=yarn%20add%20-D%20webpack-babel-env-deps)](https://copyhaste.com/c?t=yarn%20add%20-D%20webpack-babel-env-deps "yarn add -D webpack-babel-env-deps (copy)")
+[![yarn add -D webpack-babel-env-deps (copy)](https://copyhaste.com/i?t=yarn%20add%20-D%20webpack-babel-env-deps)](https://copyhaste.com/c?t=yarn%20add%20-D%20webpack-babel-env-deps 'yarn add -D webpack-babel-env-deps (copy)')
 
 or:
 
-[![npm install -D webpack-babel-env-deps (copy)](https://copyhaste.com/i?t=npm%20install%20-D%20webpack-babel-env-deps)](https://copyhaste.com/c?t=npm%20install%20-D%20webpack-babel-env-deps "npm install -D webpack-babel-env-deps (copy)")
+[![npm install -D webpack-babel-env-deps (copy)](https://copyhaste.com/i?t=npm%20install%20-D%20webpack-babel-env-deps)](https://copyhaste.com/c?t=npm%20install%20-D%20webpack-babel-env-deps 'npm install -D webpack-babel-env-deps (copy)')
 
 ## Use
 
@@ -46,12 +46,15 @@ export default {
           // specify options here or in `.babelrc`
           options: {
             presets: [
-              ['env', {
-                targets: {
-                  browsers: ['> 1%, last 2 versions, Firefox ESR'],
-                  uglify: true
+              [
+                'env',
+                {
+                  targets: {
+                    browsers: ['> 1%, last 2 versions, Firefox ESR'],
+                    uglify: true
+                  }
                 }
-              }]
+              ]
             ]
           }
         }
@@ -106,23 +109,23 @@ For example, `exclude({ defaultEngines: true })`.
 
 ## Issues
 
-* https://github.com/webpack/webpack/issues/2031
-* https://github.com/webpack/webpack/issues/2031#issuecomment-315797985
-* https://github.com/webpack/webpack/issues/4296
-* https://github.com/babel/babel-loader/issues/171
-* [https://github.com/sindresorhus/strip-indent/issues/1][strip-indent-1]
-* https://github.com/sindresorhus/pretty-bytes/issues/31
-* https://github.com/sindresorhus/ama/issues/446
-* https://github.com/caolan/async/issues/1351
+- https://github.com/webpack/webpack/issues/2031
+- https://github.com/webpack/webpack/issues/2031#issuecomment-315797985
+- https://github.com/webpack/webpack/issues/4296
+- https://github.com/babel/babel-loader/issues/171
+- [https://github.com/sindresorhus/strip-indent/issues/1][strip-indent-1]
+- https://github.com/sindresorhus/pretty-bytes/issues/31
+- https://github.com/sindresorhus/ama/issues/446
+- https://github.com/caolan/async/issues/1351
 
 ## Reference
 
-* https://github.com/facebookincubator/create-react-app/issues/1125#issuecomment-264217076
-* https://github.com/babel/babel-preset-env#targetsuglify
-* https://webpack.js.org/configuration/resolve/#resolve-mainfields
-* http://2ality.com/2017/07/npm-packages-via-babel.html
-* http://2ality.com/2017/06/pkg-esnext.html
-* https://github.com/SamVerschueren/babel-engine-plugin
+- https://github.com/facebookincubator/create-react-app/issues/1125#issuecomment-264217076
+- https://github.com/babel/babel-preset-env#targetsuglify
+- https://webpack.js.org/configuration/resolve/#resolve-mainfields
+- http://2ality.com/2017/07/npm-packages-via-babel.html
+- http://2ality.com/2017/06/pkg-esnext.html
+- https://github.com/SamVerschueren/babel-engine-plugin
 
 [engines]: https://docs.npmjs.com/files/package.json#engines
 [module]: https://github.com/rollup/rollup/wiki/pkg.module

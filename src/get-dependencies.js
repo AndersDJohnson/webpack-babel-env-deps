@@ -1,7 +1,7 @@
 import walk from './package-walk'
 
 // TODO: Implement depth option.
-export default function getDependencies (pathInPkg, { depth = 1 } = {}) {
+export default function getDependencies(pathInPkg) {
   const dependencies = {}
 
   const it = pkg => {

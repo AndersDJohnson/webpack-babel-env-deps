@@ -2,7 +2,6 @@ import path from 'path'
 import nodeExternals from 'webpack-node-externals'
 import babelEnvDeps from './src'
 
-
 const here = p => path.join(__dirname, p)
 
 export default {

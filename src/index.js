@@ -11,11 +11,17 @@ import {
 } from './node-modules-regex'
 import normalizeSemver from './semver-normalize'
 
-export function getPluginsThatDontSatisfyModuleRange (plugins, range) {
-  return _.pickBy(plugins, ({ node }) => !semver.satisfies(normalizeSemver(node), range))
+export function getPluginsThatDontSatisfyModuleRange(plugins, range) {
+  return _.pickBy(
+    plugins,
+    ({ node }) => !semver.satisfies(normalizeSemver(node), range)
+  )
 }
 
-export function getModuleNeedsBabel (pkg, { hasEsNextInMainFields, hostEngines, defaultEngines } = {}) {
+export function getModuleNeedsBabel(
+  pkg,
+  { hasEsNextInMainFields, hostEngines, defaultEngines } = {}
+) {
   let { engines } = pkg
   const hasEsNextField = getHasESNextField(Object.keys(pkg))
   // always transpile if we have an esnext field
@@ -43,15 +49,22 @@ export function getModuleNeedsBabel (pkg, { hasEsNextInMainFields, hostEngines, 
     return semver.gt(minVersionForEngines, minVersionForHostEngines)
   }
 
-  const pluginsThatDontSatisfyModuleRange = getPluginsThatDontSatisfyModuleRange(plugins, range)
+  const pluginsThatDontSatisfyModuleRange = getPluginsThatDontSatisfyModuleRange(
+    plugins,
+    range
+  )
   const namesOfPluginsThatDontSatisfyRange = _.map(
     pluginsThatDontSatisfyModuleRange,
     (plugin, name) => ({ name, node: plugin.node })
   )
-  const somePluginsDontSatisfyModuleRange = !_.isEmpty(pluginsThatDontSatisfyModuleRange)
+  const somePluginsDontSatisfyModuleRange = !_.isEmpty(
+    pluginsThatDontSatisfyModuleRange
+  )
   if (somePluginsDontSatisfyModuleRange && debug.enabled) {
-    debug('plugins')((`name "${pkg.name} range "${range}" doesn't satisfy plugins ` +
-      `${namesOfPluginsThatDontSatisfyRange.map(p => `${p.name} ${p.node}`)}`))
+    debug('plugins')(
+      `name "${pkg.name} range "${range}" doesn't satisfy plugins ` +
+        `${namesOfPluginsThatDontSatisfyRange.map(p => `${p.name} ${p.node}`)}`
+    )
   }
   return somePluginsDontSatisfyModuleRange
 }
@@ -63,30 +76,30 @@ export const esNextFields = ['module', 'jsnext:main']
 
 export const isESNextField = field => _.includes(esNextFields, field)
 
-export function getHasESNextField (mainFields = []) {
+export function getHasESNextField(mainFields = []) {
   return mainFields.some(mainField => _.includes(esNextFields, mainField))
 }
 
-export function getIndexOfESNextField (mainFields = []) {
+export function getIndexOfESNextField(mainFields = []) {
   return mainFields.findIndex(isESNextField)
 }
 
-export function isESNextFieldBeforeMainField (mainFields = []) {
-  return mainFields.length >= 0 && (
-    !_.includes(mainFields, 'main') || (
-      getHasESNextField(mainFields) && getIndexOfESNextField(mainFields) < mainFields.indexOf('main')
-
-    )
+export function isESNextFieldBeforeMainField(mainFields = []) {
+  return (
+    mainFields.length >= 0 &&
+    (!_.includes(mainFields, 'main') ||
+      (getHasESNextField(mainFields) &&
+        getIndexOfESNextField(mainFields) < mainFields.indexOf('main')))
   )
 }
 
-export function getHasESNextInMainFields (options = {}) {
+export function getHasESNextInMainFields(options = {}) {
   const { mainFields } = options
   const usesDefaultMainFields = !mainFields
   return usesDefaultMainFields || isESNextFieldBeforeMainField(mainFields)
 }
 
-export function getNeedBabel (options) {
+export function getNeedBabel(options) {
   const pathInPkg = options.path || process.cwd()
   const pkg = readPkgUp.sync({
     cwd: pathInPkg
@@ -97,17 +110,26 @@ export function getNeedBabel (options) {
   return getNeedBabelFromPackageAndDependencies(pkg, dependencies, options)
 }
 
-export function getNeedBabelFromPackageAndDependencies (pkg, dependencies, options) {
-  const hostEngines = options.engines === false ? null : (
-    (typeof options.engines === 'object' && options.engines) || pkg.engines
-  )
+export function getNeedBabelFromPackageAndDependencies(
+  pkg,
+  dependencies,
+  options
+) {
+  const hostEngines =
+    options.engines === false
+      ? null
+      : (typeof options.engines === 'object' && options.engines) || pkg.engines
 
   const hasEsNextInMainFields = getHasESNextInMainFields(options)
 
   const needBabel = _(dependencies)
-    .map((pkg, name) => ({
+    .map(pkg => ({
       ...pkg,
-      needsBabel: !!getModuleNeedsBabel(pkg, { ...options, hasEsNextInMainFields, hostEngines })
+      needsBabel: !!getModuleNeedsBabel(pkg, {
+        ...options,
+        hasEsNextInMainFields,
+        hostEngines
+      })
     }))
     .compact()
     .filter(({ needsBabel }) => needsBabel)
@@ -118,13 +140,13 @@ export function getNeedBabelFromPackageAndDependencies (pkg, dependencies, optio
   return needBabel.map(mod => mod.name).sort()
 }
 
-export function exclude (options = {}) {
+export function exclude(options = {}) {
   const names = getNeedBabel(options)
 
   return excludeRegex(names, options)
 }
 
-export function include (options = {}) {
+export function include(options = {}) {
   const names = getNeedBabel(options)
 
   return includeRegex(names, options)

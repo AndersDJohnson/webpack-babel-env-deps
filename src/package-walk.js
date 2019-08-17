@@ -4,7 +4,7 @@ import pkgDir from 'pkg-dir'
 
 import requirePackage from './require-package'
 
-function walkDeps (deps, it, root) {
+function walkDeps(deps, it, root) {
   _.forEach(deps, (__, name) => {
     let depPath
     try {
@@ -21,7 +21,7 @@ function walkDeps (deps, it, root) {
   })
 }
 
-export default function walk (pathInPkg, it, isRoot = true) {
+export default function walk(pathInPkg, it, isRoot = true) {
   let pkgRoot
   try {
     pkgRoot = pkgDir.sync(pathInPkg)

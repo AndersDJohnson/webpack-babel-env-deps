@@ -17,64 +17,70 @@ import includeFixture from '../__fixtures__/include'
 describe('index', () => {
   describe('getModuleNeedsBabel', () => {
     it('is true when has module in main fields option and has module', () => {
-      expect(getModuleNeedsBabel(
-        {
-          name: 'foo',
-          module: 'index.js'
-        },
-        {
-          hasEsNextInMainFields: true
-        }
-      )).toEqual(true)
+      expect(
+        getModuleNeedsBabel(
+          {
+            name: 'foo',
+            module: 'index.js'
+          },
+          {
+            hasEsNextInMainFields: true
+          }
+        )
+      ).toEqual(true)
     })
 
     it('is true when has module in main fields option and has jsnext:main', () => {
-      expect(getModuleNeedsBabel(
-        {
-          name: 'foo',
-          'jsnext:main': 'index.js'
-        },
-        {
-          hasEsNextInMainFields: true
-        }
-      )).toEqual(true)
+      expect(
+        getModuleNeedsBabel(
+          {
+            name: 'foo',
+            'jsnext:main': 'index.js'
+          },
+          {
+            hasEsNextInMainFields: true
+          }
+        )
+      ).toEqual(true)
     })
 
     it('is false when has module in main fields option but no module', () => {
-      expect(getModuleNeedsBabel(
-        {
-          name: 'foo'
-        },
-        {
-          hasEsNextInMainFields: true
-        }
-      )).toEqual(false)
+      expect(
+        getModuleNeedsBabel(
+          {
+            name: 'foo'
+          },
+          {
+            hasEsNextInMainFields: true
+          }
+        )
+      ).toEqual(false)
     })
 
     it('is false when not has module in main fields option and module', () => {
-      expect(getModuleNeedsBabel(
-        {
+      expect(
+        getModuleNeedsBabel({
           name: 'foo',
           module: 'index.js'
-        }
-      )).toEqual(false)
+        })
+      ).toEqual(false)
     })
 
     it('is false when not has module in main fields option and jsnext:main', () => {
-      expect(getModuleNeedsBabel(
-        {
+      expect(
+        getModuleNeedsBabel({
           name: 'foo',
           'jsnext:main': 'index.js'
-        }
-      )).toEqual(false)
+        })
+      ).toEqual(false)
     })
 
     it('is false when not has module in main fields option and no module', () => {
-      expect(getModuleNeedsBabel(
-        {
+      expect(
+        getModuleNeedsBabel({
           name: 'foo'
-        }
-      )).toEqual(false)
+        })
+      ).toEqual(false)
     })
   })
 
@@ -92,11 +98,15 @@ describe('index', () => {
     })
 
     it('is false when option passed includes module last', () => {
-      expect(getHasESNextInMainFields({ mainFields: ['main', 'module'] })).toBe(false)
+      expect(getHasESNextInMainFields({ mainFields: ['main', 'module'] })).toBe(
+        false
+      )
     })
 
     it('is true when option passed includes module first', () => {
-      expect(getHasESNextInMainFields({ mainFields: ['module', 'main'] })).toBe(true)
+      expect(getHasESNextInMainFields({ mainFields: ['module', 'main'] })).toBe(
+        true
+      )
     })
   })
 
@@ -164,9 +174,7 @@ describe('index', () => {
 
   describe('exclude', () => {
     it('works', () => {
-      expect(
-        exclude()
-      ).toEqual(excludeFixture)
+      expect(exclude()).toEqual(excludeFixture)
     })
 
     it('works with path', () => {
@@ -186,37 +194,31 @@ describe('index', () => {
     })
 
     it('works with defaultEngines false', () => {
-      expect(
-        exclude({ defaultEngines: false })
-      ).toEqual(excludeFixture)
+      expect(exclude({ defaultEngines: false })).toEqual(excludeFixture)
     })
 
     it('works with defaultEngines true', () => {
       // Assume that some packages don't have engines.
-      expect(
-        exclude({ defaultEngines: true })
-      ).not.toEqual(excludeFixture)
+      expect(exclude({ defaultEngines: true })).not.toEqual(excludeFixture)
     })
 
     it('works with defaultEngines node >=0.10', () => {
-      expect(
-        exclude({ defaultEngines: { node: '>=0.10' } })
-      ).toEqual(excludeFixture)
+      expect(exclude({ defaultEngines: { node: '>=0.10' } })).toEqual(
+        excludeFixture
+      )
     })
 
     it('works with defaultEngines node >=100', () => {
       // This also forces transpilation.
-      expect(
-        exclude({ defaultEngines: { node: '>=100' } })
-      ).not.toEqual(excludeFixture)
+      expect(exclude({ defaultEngines: { node: '>=100' } })).not.toEqual(
+        excludeFixture
+      )
     })
   })
 
   describe('include', () => {
     it('works', () => {
-      expect(
-        include()
-      ).toEqual(includeFixture)
+      expect(include()).toEqual(includeFixture)
     })
 
     it('works with path', () => {
@@ -234,7 +236,11 @@ describe('index', () => {
       const dependencies = {}
       const options = {}
 
-      const needs = getNeedBabelFromPackageAndDependencies(pkg, dependencies, options)
+      const needs = getNeedBabelFromPackageAndDependencies(
+        pkg,
+        dependencies,
+        options
+      )
 
       expect(needs).toEqual([])
     })
@@ -251,7 +257,11 @@ describe('index', () => {
       }
       const options = {}
 
-      const needs = getNeedBabelFromPackageAndDependencies(pkg, dependencies, options)
+      const needs = getNeedBabelFromPackageAndDependencies(
+        pkg,
+        dependencies,
+        options
+      )
 
       expect(needs).toEqual(['foo'])
     })
@@ -272,7 +282,11 @@ describe('index', () => {
       }
       const options = {}
 
-      const needs = getNeedBabelFromPackageAndDependencies(pkg, dependencies, options)
+      const needs = getNeedBabelFromPackageAndDependencies(
+        pkg,
+        dependencies,
+        options
+      )
 
       expect(needs).toEqual([])
     })
@@ -293,7 +307,11 @@ describe('index', () => {
       }
       const options = {}
 
-      const needs = getNeedBabelFromPackageAndDependencies(pkg, dependencies, options)
+      const needs = getNeedBabelFromPackageAndDependencies(
+        pkg,
+        dependencies,
+        options
+      )
 
       expect(needs).toEqual(['foo'])
     })
@@ -314,7 +332,11 @@ describe('index', () => {
       }
       const options = {}
 
-      const needs = getNeedBabelFromPackageAndDependencies(pkg, dependencies, options)
+      const needs = getNeedBabelFromPackageAndDependencies(
+        pkg,
+        dependencies,
+        options
+      )
 
       expect(needs).toEqual([])
     })
@@ -339,7 +361,11 @@ describe('index', () => {
         }
       }
 
-      const needs = getNeedBabelFromPackageAndDependencies(pkg, dependencies, options)
+      const needs = getNeedBabelFromPackageAndDependencies(
+        pkg,
+        dependencies,
+        options
+      )
 
       expect(needs).toEqual(['foo'])
     })
@@ -362,7 +388,11 @@ describe('index', () => {
         engines: false
       }
 
-      const needs = getNeedBabelFromPackageAndDependencies(pkg, dependencies, options)
+      const needs = getNeedBabelFromPackageAndDependencies(
+        pkg,
+        dependencies,
+        options
+      )
 
       expect(needs).toEqual(['foo'])
     })
@@ -385,7 +415,11 @@ describe('index', () => {
         engines: true
       }
 
-      const needs = getNeedBabelFromPackageAndDependencies(pkg, dependencies, options)
+      const needs = getNeedBabelFromPackageAndDependencies(
+        pkg,
+        dependencies,
+        options
+      )
 
       expect(needs).toEqual(['foo'])
     })

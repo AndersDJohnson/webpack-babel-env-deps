@@ -16,11 +16,13 @@ jest.mock('resolve', () => ({
   sync: jest.fn(() => 'ok')
 }))
 
-jest.mock('../require-package', () => jest.fn(() => ({
-  dependencies: {
-    ok: '1.0.0'
-  }
-})))
+jest.mock('../require-package', () =>
+  jest.fn(() => ({
+    dependencies: {
+      ok: '1.0.0'
+    }
+  }))
+)
 
 describe('package-walk find root error', () => {
   describe('walk', () => {

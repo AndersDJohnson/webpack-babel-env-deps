@@ -1,16 +1,16 @@
 import semver from 'semver'
 
-export default function minForRange (range) {
+export default function minForRange(range) {
   return minForRangeHelper('0.0.0', range)
 }
 
-function dots (major, minor, patch) {
+function dots(major, minor, patch) {
   return `${major}.${minor}.${patch}`
 }
 
 const max = 999999
 
-export function minForRangeHelper (current, range) {
+export function minForRangeHelper(current, range) {
   let major = semver.major(current)
   let minor = semver.minor(current)
   let patch = semver.patch(current)

@@ -1,6 +1,6 @@
 import walk from './package-walk'
 
-export default function getEngines (pathInPkg, { depth = 1 } = {}) {
+export default function getEngines(pathInPkg) {
   const engines = {}
 
   const it = pkg => {
