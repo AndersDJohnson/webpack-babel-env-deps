@@ -95,6 +95,7 @@ export function isESNextFieldBeforeMainField(mainFields = []) {
 
 export function getHasESNextInMainFields(options = {}) {
   const { mainFields } = options
+  if (mainFields === false) return false
   const usesDefaultMainFields = !mainFields
   return usesDefaultMainFields || isESNextFieldBeforeMainField(mainFields)
 }

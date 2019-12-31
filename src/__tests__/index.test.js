@@ -128,6 +128,10 @@ describe('index', () => {
         true
       )
     })
+
+    it('is false when mainFields is false', () => {
+      expect(getHasESNextInMainFields({ mainFields: false })).toBe(false)
+    })
   })
 
   describe('getHasESNextField', () => {

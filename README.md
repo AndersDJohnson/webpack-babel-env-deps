@@ -70,14 +70,25 @@ Functions `exclude` amd `include` accept an optional `options` object with follo
 
 #### `mainFields`
 
-`?array`
+`?array | ?boolean`
 
 Optional. This should match your [`resolve.mainFields`](https://webpack.js.org/configuration/resolve/#resolve-mainfields)
 if you specify it in your webpack config, else it assumes the default of `['browser', 'module', 'main']`.
 This is used to determine modules published with ES2015+ module support as `module`/`jsnext:main`,
 which by default webpack will load in preference to `main`, so that its
-`engines` field probably reflects `main` support rather than `module`/`jsnext:main` support,
+`engines` field might reflect `main` support rather than `module`/`jsnext:main` support,
 so we must assume we must transpile the `module`/`jsnext:main` version.
+
+If you want to disable `module`/`jsnext:main` detection, and rely only on `engines`.
+you can set `mainFields` to `false` explicitly.
+This would assume all dependencies with a `module`/`jsnext:main`
+field point to a graph of files that are fully transpiled down
+to code that can run in environments indicated by `engines`,
+other than retaining ES modules syntax (for tree-shaking or other purposes).
+This was the goal of the `module` field [according to Rollup](https://github.com/rollup/rollup/wiki/pkg.module),
+but the `jsnext:main` field could have ambiguities ([see this write-up](https://github.com/jsforum/jsforum/issues/5#issue-113078483)),
+and package authors in the wild may not always respect these conventions,
+so caveat emptor!
 
 #### `except`
 
