@@ -79,7 +79,7 @@ which by default webpack will load in preference to `main`, so that its
 `engines` field might reflect `main` support rather than `module`/`jsnext:main` support,
 so we must assume we must transpile the `module`/`jsnext:main` version.
 
-If you want to disable `module`/`jsnext:main` detection, and rely only on `engines`.
+If you want to disable `module`/`jsnext:main` detection, and rely only on `engines`,
 you can set `mainFields` to `false` explicitly.
 This would assume all dependencies with a `module`/`jsnext:main`
 field point to a graph of files that are fully transpiled down
