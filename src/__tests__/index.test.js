@@ -5,6 +5,7 @@ import {
   exclude,
   include,
   getModuleNeedsBabel,
+  getPluginSatisfiesModuleRange,
   getNeedBabelFromPackageAndDependencies,
   getHasESNextInMainFields,
   getHasESNextField,
@@ -100,6 +101,47 @@ describe('index', () => {
         getModuleNeedsBabel({
           name: 'foo'
         })
+      ).toEqual(false)
+    })
+  })
+
+  describe('getPluginSatisfiesModuleRange', () => {
+    it('satisfies for plugins with no Node support', () => {
+      expect(
+        getPluginSatisfiesModuleRange(
+          {
+            chrome: '80',
+            firefox: '72',
+            opera: '67'
+          },
+          '>10'
+        )
+      ).toEqual(true)
+    })
+    it('satisfies for plugins with higher Node version', () => {
+      expect(
+        getPluginSatisfiesModuleRange(
+          {
+            chrome: '80',
+            firefox: '72',
+            opera: '67',
+            node: '12'
+          },
+          '>10'
+        )
+      ).toEqual(true)
+    })
+    it('does not satisfy for plugins with lower Node version', () => {
+      expect(
+        getPluginSatisfiesModuleRange(
+          {
+            chrome: '80',
+            firefox: '72',
+            opera: '67',
+            node: '8'
+          },
+          '>10'
+        )
       ).toEqual(false)
     })
   })

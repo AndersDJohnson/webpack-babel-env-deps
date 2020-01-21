@@ -11,10 +11,18 @@ import {
 } from './node-modules-regex'
 import normalizeSemver from './semver-normalize'
 
+export function getPluginSatisfiesModuleRange(plugin, range) {
+  const { node } = plugin
+  if (!node) {
+    return true
+  }
+  return semver.satisfies(normalizeSemver(node), range)
+}
+
 export function getPluginsThatDontSatisfyModuleRange(plugins, range) {
   return _.pickBy(
     plugins,
-    ({ node }) => !semver.satisfies(normalizeSemver(node), range)
+    plugin => !getPluginSatisfiesModuleRange(plugin, range)
   )
 }
 
