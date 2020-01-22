@@ -20,7 +20,7 @@
     "prepush": "yarn test && yarn build"
   },
   "dependencies": {
-    "debug": "^2.6.8",
+    "debug": "^2.6.9",
     "lodash": "^4.17.4",
     "pkg-dir": "^2.0.0",
     "read-pkg-up": "^2.0.0",
@@ -35,12 +35,12 @@
     "@babel/register": "^7.5.5",
     "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",
-    "codecov": "^2.2.0",
+    "codecov": "^3.6.1",
     "eslint": "^4.3.0",
     "eslint-config-prettier": "^6.0.0",
-    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-jest": "^20.0.3",
-    "eslint-plugin-markdown": "^1.0.0-beta.6",
+    "eslint-plugin-markdown": "^1.0.1",
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-promise": "^3.5.0",
@@ -49,7 +49,7 @@
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
     "strip-indent": "^2.0.0",
-    "webpack": "^4.39.2",
+    "webpack": "^4.41.5",
     "webpack-cli": "^3.3.6",
     "webpack-node-externals": "^1.6.0"
   },
