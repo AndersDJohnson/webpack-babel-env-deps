@@ -20,7 +20,7 @@
     "prepush": "yarn test && yarn build"
   },
   "dependencies": {
-    "debug": "^2.6.8",
+    "debug": "^2.6.9",
     "lodash": "^4.17.4",
     "pkg-dir": "^2.0.0",
     "read-pkg-up": "^2.0.0",
