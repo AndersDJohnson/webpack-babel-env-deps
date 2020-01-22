@@ -2,7 +2,7 @@ import _ from 'lodash'
 import semver from 'semver'
 import debug from 'debug'
 import readPkgUp from 'read-pkg-up'
-import plugins from '@babel/compat-data/plugins'
+import plugins from '@babel/preset-env/data/plugins'
 import semverMinForRange from './semver-min-for-range'
 import getDependencies from './get-dependencies'
 import {
