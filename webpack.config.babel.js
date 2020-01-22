@@ -9,6 +9,9 @@ export default {
   },
   target: 'node',
   externals: [nodeExternals()],
+  optimization: {
+    minimize: false
+  },
   module: {
     rules: [
       {
