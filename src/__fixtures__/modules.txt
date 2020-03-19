@@ -1,1 +1,1 @@
-find-up|load-json-file|locate-path|p-limit|p-locate|path-exists|path-type|pkg-dir|read-pkg|read-pkg-up|resolve-pkg|strip-bom|webpack-babel-env-deps
+find-up|load-json-file|locate-path|p-limit|p-locate|p-try|path-exists|path-type|pkg-dir|read-pkg|read-pkg-up|resolve-pkg|strip-bom|webpack-babel-env-deps
