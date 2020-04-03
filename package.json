@@ -82,6 +82,7 @@
     "dependencies",
     "dependency"
   ],
+  "funding": "https://github.com/sponsors/AndersDJohnson",
   "peerDependencies": {
     "@babel/preset-env": "^7"
   }
