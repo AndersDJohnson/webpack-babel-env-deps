@@ -4,7 +4,7 @@ export default function getEngines(pathInPkg) {
   const engines = {}
 
   const it = pkg => {
-    if (engines.hasOwnProperty(pkg.name)) return true
+    if (Object.prototype.hasOwnProperty.call(engines, pkg.name)) return true
     engines[pkg.name] = {
       name: pkg.name,
       engines: pkg.engines,
