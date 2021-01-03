@@ -10,7 +10,7 @@ This mainly aims to solve errors during minification in production builds, since
 are unsupported by the
 [native UglifyJS webpack plugin](https://github.com/webpack-contrib/uglifyjs-webpack-plugin) through at least `3.x`.
 See [issues](#issues) below for examples of this error and affected modules.
-**Update: Webpack new uses Terser rather than Uglify for minification - this example may no longer be valid.**
+**Update: Webpack now uses Terser rather than Uglify for minification - this example may no longer be valid.**
 
 This module generates regular expressions to be used in the `exclude` or `include` properties
 of your [`babel-loader`][babel-loader] rule in your configuration.
@@ -107,22 +107,22 @@ For example, `exclude({ defaultEngines: true })`.
 
 ## Issues
 
-- https://github.com/webpack/webpack/issues/2031
-- https://github.com/webpack/webpack/issues/2031#issuecomment-315797985
-- https://github.com/webpack/webpack/issues/4296
-- https://github.com/babel/babel-loader/issues/171
+- [https://github.com/webpack/webpack/issues/2031](https://github.com/webpack/webpack/issues/2031)
+- [https://github.com/webpack/webpack/issues/2031#issuecomment-315797985](https://github.com/webpack/webpack/issues/2031#issuecomment-315797985)
+- [https://github.com/webpack/webpack/issues/4296](https://github.com/webpack/webpack/issues/4296)
+- [https://github.com/babel/babel-loader/issues/171](https://github.com/babel/babel-loader/issues/171)
 - [https://github.com/sindresorhus/strip-indent/issues/1][strip-indent-1]
-- https://github.com/sindresorhus/pretty-bytes/issues/31
-- https://github.com/sindresorhus/ama/issues/446
-- https://github.com/caolan/async/issues/1351
+- [https://github.com/sindresorhus/pretty-bytes/issues/31](https://github.com/sindresorhus/pretty-bytes/issues/31)
+- [https://github.com/sindresorhus/ama/issues/446](https://github.com/sindresorhus/ama/issues/446)
+- [https://github.com/caolan/async/issues/1351](https://github.com/caolan/async/issues/1351)
 
 ## Reference
 
-- https://github.com/facebookincubator/create-react-app/issues/1125#issuecomment-264217076
-- https://webpack.js.org/configuration/resolve/#resolve-mainfields
-- http://2ality.com/2017/07/npm-packages-via-babel.html
-- http://2ality.com/2017/06/pkg-esnext.html
-- https://github.com/SamVerschueren/babel-engine-plugin
+- [https://github.com/facebookincubator/create-react-app/issues/1125#issuecomment-264217076](https://github.com/facebookincubator/create-react-app/issues/1125#issuecomment-264217076)
+- [https://webpack.js.org/configuration/resolve/#resolve-mainfields](https://webpack.js.org/configuration/resolve/#resolve-mainfields)
+- [http://2ality.com/2017/07/npm-packages-via-babel.html](http://2ality.com/2017/07/npm-packages-via-babel.html)
+- [http://2ality.com/2017/06/pkg-esnext.html](http://2ality.com/2017/06/pkg-esnext.html)
+- [https://github.com/SamVerschueren/babel-engine-plugin](https://github.com/SamVerschueren/babel-engine-plugin)
 
 [engines]: https://docs.npmjs.com/files/package.json#engines
 [module]: https://github.com/rollup/rollup/wiki/pkg.module
