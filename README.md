@@ -9,3 +9,7 @@ by comparing your minimum Node.js engine against theirs ([`engines`][engines] in
 their minimum Node.js engine or published
 ES2015/ES6+ source ([`module`][module]/`jsnext:main` in `package.json`)
 to require features provided by plugins and polyfills from [`@babel/preset-env`][@babel/preset-env].
+
+[engines]: https://docs.npmjs.com/files/package.json#engines
+[module]: https://github.com/rollup/rollup/wiki/pkg.module
+[@babel/preset-env]: https://github.com/babel/babel-preset-env
