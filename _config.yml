@@ -5,5 +5,7 @@ andersdjohnson:
   google_analytics: "G-GKW4WE5K60"
   # Show badges for npm
   npm_name: webpack-babel-env-deps
+  # Should install as dev dependency.
+  npm_dev: true
   # Show a badge for Travis CI
   travis: true
