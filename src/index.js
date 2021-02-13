@@ -111,7 +111,8 @@ export function getHasESNextInMainFields(options = {}) {
 export function getNeedBabel(options) {
   const pathInPkg = options.path || process.cwd()
   const pkg = readPkgUp.sync({
-    cwd: pathInPkg
+    cwd: pathInPkg,
+    normalize: false // Support projects with invalid package versions.
   })
 
   const dependencies = getDependencies(pathInPkg, options)
